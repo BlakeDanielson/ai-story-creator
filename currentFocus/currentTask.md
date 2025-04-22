@@ -1,42 +1,69 @@
-# Current Task: Initialize FastAPI Backend & Implement /health Endpoint (TDD)
+# Current Task: Set Up Environment for API Management and Backend Development
 
-**Reference:** Sprint 0 - Tasks 2.1 & 2.2
+**Reference:** Sprint 0 - Task 1.5
 
-**Goal:** Create the basic FastAPI application structure and implement the initial `/health` check endpoint using Test-Driven Development.
+**Goal:** Establish a complete backend environment with proper dependency management, API design principles, and development configuration to support subsequent backend development tasks.
 
 **Actionable Steps:**
 
-1.  **Initialize Project (Task 2.1):**
-    *   Ensure you are in the `backend` directory (or create it if using monorepo structure).
-    *   Create `backend/main.py`.
-    *   Initialize the FastAPI app instance (`app = FastAPI()`) in `main.py`.
-    *   Set up basic configuration loading (e.g., using `pydantic-settings`).
-    *   Create `backend/requirements.txt` (assuming this choice from Task 1.5).
-    *   Add `fastapi`, `uvicorn[standard]`, `pydantic-settings`, `pytest`, `pytest-asyncio`, `httpx` (for TestClient) to `requirements.txt`.
-    *   Create and activate a virtual environment (e.g., `python -m venv .venv`, `source .venv/bin/activate` or `.\.venv\Scripts\activate`).
-    *   Install dependencies: `pip install -r requirements.txt`.
+1. **Backend Dependency Management Selection:**
+   * ✅ Decision made: **Poetry** chosen over requirements.txt and PDM
+   * Reasons for choice:
+     * Robust dependency resolution and lockfile system
+     * Integrated virtual environment management
+     * Separation of development and production dependencies
+     * Better handling of complex dependency trees
+     * Modern packaging capabilities for potential future distribution
 
-2.  **Implement /health Endpoint (TDD - Task 2.2):**
-    *   **Test First (Red):**
-        *   Create `backend/tests/test_main.py`.
-        *   Import `TestClient` from `fastapi.testclient` and the `app` from `main`.
-        *   Write `test_health_check()` function:
-            *   Instantiate `client = TestClient(app)`.
-            *   Make a GET request: `response = client.get("/health")`.
-            *   Assert status code is 200: `assert response.status_code == 200`.
-            *   Assert response body: `assert response.json() == {"status": "ok"}`.
-        *   Run tests (`pytest backend/tests`). **Verify failure (e.g., 404 Not Found).**
-    *   **Implement (Green):**
-        *   In `backend/main.py`, add the endpoint:
-          ```python
-          @app.get("/health")
-          async def health_check():
-              return {"status": "ok"}
-          ```
-    *   **Test Again:**
-        *   Run tests (`pytest backend/tests`). **Verify success.**
-    *   **Refactor:**
-        *   Review the code in `main.py` and `test_main.py` for clarity and simplicity. (Minimal refactoring likely needed here).
-    *   **Commit:**
-        *   Stage changes (`git add backend/main.py backend/tests/test_main.py backend/requirements.txt`).
-        *   Commit (`git commit -m "feat(backend): initialize FastAPI and add /health endpoint via TDD"`).
+2. **Documentation and Setup:**
+   * ✅ Updated `backend/README.md` to document the Poetry dependency management approach
+   * ✅ Documented reasoning behind the choice
+   * ✅ Included setup instructions for other developers
+
+3. **Core Environment Setup:**
+   * Create Poetry environment: `poetry install`
+   * Activate Poetry shell: `poetry shell`
+   * ✅ Created initial dependency file (`pyproject.toml`)
+   * Ensure poetry.lock is generated and committed to version control
+
+4. **API Design Principles Documentation:**
+   * ✅ Created `backend/docs/api_design_principles.md`
+   * ✅ Documented RESTful API conventions (endpoint naming, HTTP methods, status codes)
+   * ✅ Defined response formats and error handling strategies
+   * ✅ Outlined API versioning approach
+   * ✅ Documented authentication/authorization standards
+
+5. **Development Environment Configuration:**
+   * ✅ Set up environment variables management via pydantic-settings
+   * ✅ Created configuration template (.env.example)
+   * ✅ Documented configuration practices in README
+   * ✅ Ensured secrets are managed securely (not hardcoded)
+
+6. **Install Core Dependencies:**
+   * ✅ Added essential packages to pyproject.toml:
+     * Web framework: FastAPI
+     * ASGI server: Uvicorn
+     * Configuration: pydantic-settings
+     * Testing: pytest, pytest-asyncio, httpx
+     * Database: SQLAlchemy, alembic (for migrations)
+     * API documentation: OpenAPI via FastAPI
+   * Generate poetry.lock by running `poetry lock`
+
+7. **Verify Environment:**
+   * Create a simple verification script
+   * Test Poetry environment: `poetry run python -c "import fastapi, sqlalchemy, pytest"`
+   * Document any issues and their resolutions
+
+8. **Project Structure Setup:**
+   * ✅ Created clean architecture folder structure:
+     * models/ - Database models
+     * schemas/ - Pydantic schemas
+     * routers/ - API endpoints
+     * services/ - Business logic
+     * repositories/ - Data access
+     * middlewares/ - Request/response processing
+     * utils/ - Helper functions
+
+9. **Commit Changes:**
+   * Stage changes to repository
+   * Commit with descriptive message: "feat(backend): set up Poetry-based environment with API design principles"

@@ -1,23 +1,42 @@
-# Active Focus: Backend Foundation & Health Check
+# Active Focus: Backend Environment and API Management Setup
 
 **Objective:**
 
-*   Establish the core structure for the Python FastAPI backend service.
-*   Implement the first API endpoint (`/health`) to verify basic service operation.
-*   Adhere strictly to the Test-Driven Development (TDD) cycle (Red-Green-Refactor).
+* Establish a robust backend environment for API development and management
+* Define and document API design principles and standards
+* Configure dependency management and development environment
+* Set up the foundation for scalable and maintainable backend development
 
 **Critical Context:**
 
-*   **Project Structure:** Assumes a monorepo structure with a dedicated `backend` directory.
-*   **Technology Stack:** Python, FastAPI, pytest.
-*   **Dependency Management:** Using `pip` and `requirements.txt` (as per Sprint 0 recommendation, unless decided otherwise in Task 1.5).
-*   **Environment:** Development occurs locally, ideally within a virtual environment. Docker setup (Task 1.3) is planned but not a strict prerequisite for *this specific task*.
-*   **Prerequisites:** Basic Git setup (Task 1.1), IDE/Linter configuration (Task 1.6) should be in place or addressed concurrently.
+* **Project Structure:** Monorepo structure with a dedicated `backend` directory
+* **Technology Stack:** Python, FastAPI, SQLAlchemy, and related tools
+* **Dependency Management:** Poetry chosen for robust dependency resolution, virtual environment management, and better organization
+* **Environment:** Local development environment with proper configuration for different deployment stages
+* **Prerequisites:** Basic Git setup (Task 1.1) should be in place; Docker setup (Task 1.3) may be configured in parallel
 
 **Success Criteria:**
 
-*   The `backend/main.py` file exists and initializes a FastAPI application.
-*   The `backend/requirements.txt` file lists necessary dependencies.
-*   The `backend/tests/test_main.py` file contains a passing test for the `/health` endpoint.
-*   A GET request to the running application's `/health` endpoint returns a 200 status code and the JSON body `{"status": "ok"}`.
-*   Code implementing the feature and its test is committed to version control.
+* ✅ Backend dependency management approach is chosen and documented (Poetry)
+* ✅ Project structure set up with clean architecture principles
+* ✅ Development environment is configured with Poetry for dependency and virtual environment management
+* ✅ Core dependencies are identified and added to pyproject.toml
+* ✅ API design principles and standards are documented
+* ✅ Configuration management is set up to handle different environments (dev, test, prod)
+* ✅ Environment variable template created (.env.example)
+* ✅ No hardcoded secrets or environment values in the codebase
+* ✅ All setup decisions and processes are documented for team reference
+
+**Implementation Details:**
+
+* **Dependency Management:** Using Poetry for its superior dependency resolution, lockfile system, and virtual environment management
+* **Configuration:** Using pydantic-settings with environment variable support
+* **Project Structure:** Following clean architecture principles with separation of models, schemas, services, and routers
+* **API Design:** RESTful conventions with clear standards for endpoints, response formats, and error handling
+* **Documentation:** Comprehensive documentation in README.md and specialized docs in the docs/ directory
+
+**Next Steps After Completion:**
+
+* Proceed to Task 2.1: Initialize FastAPI Project
+* Implement health endpoint using TDD (Task 2.2)
+* Database setup and connection testing (Task 2.3)
