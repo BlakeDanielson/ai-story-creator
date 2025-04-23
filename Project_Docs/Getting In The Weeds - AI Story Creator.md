@@ -7,9 +7,10 @@
 *   **Task 1.1 (Git Strategy):** Define specific branch naming conventions (e.g., feature/, bugfix/, release/), PR template requirements, and required reviewers/approval processes.
 *   **Task 1.2 (Notion Workflow):** Detail the Notion task states (e.g., To Do, In Progress, In Review, QA, Done), required fields per task (Assignee, Sprint, Story Points?), and linking strategy between tasks, epics, and potentially design docs/ADRs.
 *   **Task 1.5 (Dependency Management - BE):** Use Poetry for managing Python dependencies and lock files. Document the chosen process.
-*   **Task 1.6 (IDE Setup):** Specify required linters/formatters (e.g., black, isort, flake8 for Python; dart format, dart analyze with specific analysis\_options.yaml rules for Flutter) and IDE extensions to enforce consistency.
+*   **Task 1.6 (IDE Setup):** Specify required linters/formatters (e.g., black, isort, flake8 for Python; dart format, dart analyze with specific analysis\_options.yaml rules for Flutter) and IDE extensions to enforce consistency. Also, ensure all team members configure their IDEs to use the project's virtual environment.
 
 **2. Backend Development (Section 3.2)**
+*   **Task 1.3 (Docker Environment):** Ensure the docker-compose.yml file is up-to-date with the correct environment variables (AISTORY\_DATABASE\_URL, AISTORY\_DEBUG) and that the Docker setup instructions are clear and concise.
 
 *   **API Contract Definitions (Appendix 6.1):**
     *   **Critical Endpoints:** Define *exact* request/response JSON structures (including field names, data types, nullability) with examples for:

@@ -67,10 +67,11 @@
          ports:
            - "8000:8000"
          environment:
-           DATABASE\_URL: postgresql+asyncpg://user:password@db:5432/story\_creator\_db
-           # Add other necessary ENV VARS (JWT\_SECRET, etc.)
-         depends\_on:
-           - db
+          AISTORY\_DATABASE\_URL: postgresql+asyncpg://user:password@db:5432/story\_creator\_db
+          AISTORY\_DEBUG: "true"  # Enable debug mode
+          # Add other necessary ENV VARS (JWT\_SECRET, etc.)
+        depends\_on:
+          - db
 
      volumes:
        postgres\_data:

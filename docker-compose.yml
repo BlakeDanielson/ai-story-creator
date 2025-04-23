@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: story_creator_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password # Use secrets in real setup
+    ports:
+      - "5432:5432" # Map only if needed locally outside Docker
+
+  backend:
+    build: ./backend # Points to the directory with Dockerfile
+    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app # Mount local code for hot-reloading
+    ports:
+      - "8000:8000"
+    environment:
+      AISTORY_DATABASE_URL: postgresql+asyncpg://user:password@db:5432/story_creator_db
+      PYTHONPATH: /app
+      AISTORY_DEBUG: "true"  # Enable debug mode
+      # Add other necessary ENV VARS (JWT_SECRET, etc.)
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

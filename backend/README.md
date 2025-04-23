@@ -66,15 +66,19 @@ When adding new dependencies:
    ```bash
    poetry run uvicorn main:app --reload
    ```
-
 ### Docker Development
 
-The project includes Docker support. To use it:
+The project includes Docker support using `docker-compose`. To use it:
 
-```bash
-# From the root directory of the project:
-docker-compose up --build
-```
+1. Ensure Docker is installed and running on your system.
+2. From the root directory of the project, run:
+   ```bash
+   docker-compose up --build
+   ```
+
+   This command builds the Docker images and starts the containers defined in `docker-compose.yml`.
+
+   The backend container exposes port 8000, which you can access in your browser at `http://localhost:8000`.
 
 ## Project Structure
 
@@ -104,11 +108,11 @@ backend/
 The application uses `pydantic-settings` to handle configuration. Settings are loaded from environment variables, with `.env` file support for local development. The configuration system looks for the `.env` file in the project root directory, not in the backend directory.
 
 Key environment variables:
-- `aistory_debug`: Set to "True" for development mode
-- `aistory_database_url`: PostgreSQL connection string
-- `aistory_secret_key`: Secret key for JWT and security features
+- `AISTORY_DEBUG`: Set to "True" for development mode
+- `AISTORY_DATABASE_URL`: PostgreSQL connection string
+- `AISTORY_SECRET_KEY`: Secret key for JWT and security features
 
-Environment variables for the backend are prefixed with `aistory_` to distinguish them from frontend variables in the shared `.env` file.
+Environment variables for the backend are prefixed with `AISTORY_` to distinguish them from frontend variables in the shared `.env` file.
 
 ## Testing
 
